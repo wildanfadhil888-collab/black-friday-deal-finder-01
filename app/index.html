@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DealHound — Black Friday Deal Finder</title>
+<meta name="description" content="DealHound sniffs out real Black Friday deals: 25 checked prices from Amazon, Walmart and Best Buy, with honest verdicts.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2314213d'/%3E%3Ctext x='16' y='23' font-size='18' font-weight='bold' text-anchor='middle' fill='%23ffc53d' font-family='sans-serif'%3ED%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="./style.css">
+<script type="module" src="./main.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#/">🐾 DealHound</a>
+  <span class="tagline">Sniffing out real Black Friday deals</span>
+</header>
+
+<main>
+  <section class="hero" id="hero">
+    <h1>Black Friday deals, checked today — not just claimed.</h1>
+    <p class="hero-sub">Every price below was read from the store's own product page on 27 November 2026. The discount is worked out from the two prices, and each deal gets an honest verdict: strong, good, or just a routine sale.</p>
+    <dl class="stats">
+      <div><dt>Deals checked</dt><dd id="stat-deals">25</dd></div>
+      <div><dt>Stores</dt><dd id="stat-stores">3</dd></div>
+      <div><dt>Biggest cut</dt><dd id="stat-best">−60%</dd></div>
+      <div><dt>Total you could save</dt><dd id="stat-saved">$0</dd></div>
+    </dl>
+  </section>
+
+  <section id="list-view">
+    <form class="controls" onsubmit="return false" aria-label="Find a deal">
+      <label class="search-label">Search
+        <input id="search" type="search" placeholder="Try “dyson” or “lego”…" autocomplete="off">
+      </label>
+      <label>Category
+        <select id="category">
+          <option value="all">All categories</option>
+        </select>
+      </label>
+      <label>Store
+        <select id="store">
+          <option value="all">All stores</option>
+        </select>
+      </label>
+      <label>Min. discount
+        <select id="min-off">
+          <option value="0">Any discount</option>
+          <option value="30">30% off or more</option>
+          <option value="40">40% off or more</option>
+          <option value="50">50% off or more</option>
+        </select>
+      </label>
+      <label>Sort by
+        <select id="sort">
+          <option value="discount">Biggest discount</option>
+          <option value="priceAsc">Lowest price</option>
+          <option value="priceDesc">Highest price</option>
+          <option value="name">Name A–Z</option>
+        </select>
+      </label>
+      <button id="clear-filters" type="button">Clear filters</button>
+    </form>
+    <p id="count" class="count" aria-live="polite">Showing all 25 deals</p>
+    <div id="grid" class="grid"></div>
+  </section>
+
+  <div id="app" hidden></div>
+</main>
+
+<footer>
+  <p>Prices checked 27 Nov 2026 (UTC) on each store's product page — see the source line on every deal. Prices change fast on Black Friday; confirm the price on the store page before you buy. DealHound is an independent finder, not affiliated with Amazon, Walmart or Best Buy.</p>
+  <p class="verdict-key"><strong>Verdict key:</strong> <span class="verdict verdict-strong">Strong deal</span> 50% off or more · <span class="verdict verdict-good">Good deal</span> 35–49% off · <span class="verdict verdict-routine">Routine sale</span> under 35% off.</p>
+</footer>
+</body>
+</html>
